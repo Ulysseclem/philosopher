@@ -12,15 +12,34 @@
 
 #include "philosopher.h"
 
+size_t	get_current_time(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
 
 void	eat(t_philo *philo)
 {
 	struct timeval	eat_start;
 
 	gettimeofday(&eat_start, NULL);
-	usleep(10000);
-	printf("%ld : Philo %d is eating\n", (eat_start.tv_sec * 1000 + eat_start.tv_usec) - philo->start, philo->id);
+	ft_usleep(philo->tteat);
+	printf("%ld : Philo %d is eating\n",  get_current_time() - philo->start, philo->id);
 }
+
 void	ft_sleep(t_philo *philo)
 {
 	printf("Philo %d is sleeping\n", philo->id);
@@ -68,7 +87,7 @@ int	main(int ac, char **av)
 	u_int64_t		start_time;
 
 	gettimeofday(&start, NULL);
-	start_time = start.tv_sec * 1000 + start.tv_usec;
+	start_time = start.tv_sec * 1000 + start.tv_usec / 1000;
 	if (ac != 6)
 		return (0);
 	data = malloc(sizeof(t_data));

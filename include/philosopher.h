@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHER_H
-# define PHILOSPHER_H
+# define PHILOSOPHER_H
 
 # include <unistd.h>
 # include <stdlib.h>
