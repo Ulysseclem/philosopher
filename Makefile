@@ -32,6 +32,10 @@ INCS        := include    \
 
 SRC_DIR     := src
 SRCS        :=main.c \
+				init.c \
+				process.c \
+				utils.c \
+				threads.c \
 
 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

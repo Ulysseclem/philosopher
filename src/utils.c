@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ulysseclem <ulysseclem@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 15:28:02 by uclement          #+#    #+#             */
-/*   Updated: 2023/09/26 21:39:14 by ulysseclem       ###   ########.fr       */
+/*   Created: 2023/09/26 20:37:24 by ulysseclem        #+#    #+#             */
+/*   Updated: 2023/09/26 20:48:46 by ulysseclem       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-
-int	main(int ac, char **av)
+size_t	get_current_time(void)
 {
-	t_data			*data;
-	if (ac != 6)
-		return (0);
-	data = malloc(sizeof(t_data));
-	init_all(data, av);
-	threads_maker(data);
-	threads_breaker(data);
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
 	return (0);
 }
