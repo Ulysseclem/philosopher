@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ulysseclem <ulysseclem@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:29:33 by ulysseclem        #+#    #+#             */
-/*   Updated: 2023/09/27 17:42:00 by uclement         ###   ########.fr       */
+/*   Updated: 2023/09/27 21:30:00 by ulysseclem       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	*watcher(void *data_ptr)
 
 void	threads_breaker(t_data *data)
 {
-	int	i;
+	// int	i;
 
-	i = -1;
+	// i = -1;
 	// while (++i < data->count)
 	// 	pthread_mutex_destroy(&data->forks[i]);
 	pthread_mutex_destroy(&data->dead_lock);
@@ -71,13 +71,13 @@ void	threads_maker(t_data *data)
 	int	i;
 	
 	i = 0;
-	// pthread_create(&data->watcher, NULL, &watcher, data);
+	pthread_create(&data->watcher, NULL, &watcher, data);
 	while (i < data->count)
 	{
 		pthread_create(&data->philo[i].thread, NULL, &routine, &data->philo[i]);
 		i++;
 	}
-	// pthread_join(data->watcher, NULL);
+	pthread_join(data->watcher, NULL);
 	i = -1;
 	while (++i < data->count)
 		pthread_join(data->philo[i].thread, NULL);
