@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ulysseclem <ulysseclem@student.42.fr>      +#+  +:+       +#+        */
+/*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 15:28:02 by uclement          #+#    #+#             */
-/*   Updated: 2023/09/26 21:39:14 by ulysseclem       ###   ########.fr       */
+/*   Updated: 2023/09/27 17:41:27 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ int	main(int ac, char **av)
 	init_all(data, av);
 	threads_maker(data);
 	threads_breaker(data);
+	// free(forks);
+	free(data->philo);
+	free(data);
 	return (0);
 }
