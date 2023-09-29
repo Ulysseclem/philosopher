@@ -6,7 +6,7 @@
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:35:09 by ulysseclem        #+#    #+#             */
-/*   Updated: 2023/09/28 16:35:43 by uclement         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:16:48 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_philo(t_data	*data, pthread_mutex_t *forks)
 		data->philo[i].id = i + 1;
 		data->philo[i].data = data;
 		data->philo[i].ttdie = data->ttdie;
+		data->philo[i].tteat = data->tteat;
 		data->philo[i].start = get_current_time();
 		data->philo[i].lastmeal = get_current_time();
 		data->philo[i].count_meal = 0;

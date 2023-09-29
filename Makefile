@@ -43,8 +43,9 @@ BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 DEPS        := $(OBJS:.o=.d)
+# -fsanitize=thread
 
-CC          := clang -fsanitize=thread
+CC          := clang 
 CFLAGS      := -Wall -Wextra -Werror -g -pthread
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))

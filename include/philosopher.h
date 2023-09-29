@@ -6,7 +6,7 @@
 /*   By: uclement <uclement@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:28:29 by uclement          #+#    #+#             */
-/*   Updated: 2023/09/28 17:29:37 by uclement         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:16:30 by uclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_philo {
 	int				is_eating;
 	int				must_eat;
 	u_int64_t				ttdie;
+	u_int64_t				tteat;
 	u_int64_t		lastmeal;
 	u_int64_t		start;
 	pthread_t		thread;
